@@ -9,7 +9,7 @@
 
 void MasterRenderer::update(const Camera& camera)
 {
-    glClearColor(0.1, 0.5, 1.0, 1.0);
+    glClearColor(0.1f, 0.5f, 1.0f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     BlockDatabase::get().getTextureAtlas().bind();

@@ -8,7 +8,7 @@
 #include "../Model.h"
 
 class Cube;
-struct Camera;
+class Camera;
 
 class SimpleRenderer
 {

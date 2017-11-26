@@ -1,52 +1,52 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.8)
 project(HopsonCraft)
 
-set (CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 
+
 file(GLOB src_files
-    Source/*.cpp
-	Source/GUI/*.cpp
-    Source/HUD/*.cpp
-	Source/Input/*.cpp
-	Source/Maths/*.cpp
-	Source/Physics/*.cpp
-	Source/Player/*.cpp
-	Source/Renderer/*.cpp
-    Source/ResourceManagers/*.cpp
-	Source/Shaders/*.cpp
-	Source/States/*cpp
-	Source/Texture/*.cpp
-    Source/Util/*.cpp
-	Source/World/*.cpp
-	Source/World/Block/Types/*.cpp
-	Source/World/Block/*.cpp
+	Source/gl3w/*.c
+    Source/*.cpp Source/*.h
+	Source/GUI/*.cpp Source/GUI/*.h
+    Source/HUD/*.cpp Source/HUD/*.h
+	Source/Input/*.cpp Source/Input/*.h
+	Source/Maths/*.cpp Source/Maths/*.h
+	Source/Physics/*.cpp Source/Physics/*.h
+	Source/Player/*.cpp Source/Player/*.h
+	Source/Renderer/*.cpp Source/Renderer/*.h
+    Source/ResourceManagers/*.cpp Source/ResourceManagers/*.h
+	Source/Shaders/*.cpp Source/Shaders/*.h
+	Source/States/*.cpp Source/States/*.h
+	Source/Texture/*.cpp Source/Texture/*.h
+    Source/Util/*.cpp Source/Util/*.h
+	Source/World/*.cpp Source/World/*.h
+	Source/World/Block/Types/*.cpp Source/World/Block/Types/*.h
+	Source/World/Block/*.cpp Source/World/Block/*.h
 	)
 
-find_package(OpenGL REQUIRED)
-if (OPENGL_FOUND)
-    include_directories(${OPENGL_INCLUDE_DIRS})
-    link_libraries(${OPENGL_LIBRARIES})
-endif()
-
-find_package(GLEW REQUIRED)
-if (GLEW_FOUND)
-    include_directories(${GLEW_INCLUDE_DIRS})
-    link_libraries(${GLEW_LIBRARIES})
-endif()
-
-find_package(SFML REQUIRED system window graphics network audio)
-if (SFML_FOUND)
-    include_directories(${SFML_INCLUDE_DIRS})
-    link_libraries(${SFML_LIBRARIES})
-endif()
-
-find_package(Threads REQUIRED)
-if (THREADS_FOUND)
-    link_libraries(Threads::Threads)
-endif()
-
 add_executable(game ${src_files})
+
+target_compile_features(game 
+PRIVATE
+    cxx_std_14
+)
+
+find_package(OpenGL REQUIRED)
+find_package(SFML REQUIRED system window graphics network audio)
+find_package(Threads REQUIRED)
+
+target_include_directories(game
+PRIVATE
+	Source/gl3w
+	OpenGL::GL
+	${SFML_INCLUDE_DIR}	
+)
+
+target_link_libraries(game
+PRIVATE
+	Threads::Threads
+    OpenGL::GL
+	${SFML_LIBRARIES}
+)
 
 set_target_properties(game PROPERTIES POSITION_INDEPENDENT_CODE ON)

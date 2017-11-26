@@ -13,14 +13,14 @@ void Player::input()
 
 void Player::keyBoardInput ()
 {
-    Vector3 change;
-    float speed = 0.2;
+    Vector3 change(0.0f, 0.0f, 0.0f);
+    float speed = 0.2f;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
     {
         speed *= 3;
     }
 
-    if(m_isInLiquid) speed /= 1.5;
+    if(m_isInLiquid) speed /= 1.5f;
 
     float yaw   = glm::radians(rotation.y);
     float yaw90 = glm::radians(rotation.y + 90);
@@ -85,8 +85,8 @@ void Player::mouseInput ()
 
     auto mouseChange = sf::Mouse::getPosition() - lastMousePosition;
 
-    rotation.y += mouseChange.x * 0.05;
-    rotation.x += mouseChange.y * 0.05;
+    rotation.y += mouseChange.x * 0.05f;
+    rotation.x += mouseChange.y * 0.05f;
 
     constexpr int8_t BOUND = 82;
 

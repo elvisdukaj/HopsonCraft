@@ -20,15 +20,15 @@ bool TextureAtlas::loadFromFile(const std::string& textureName,
 
 std::vector<GLfloat> TextureAtlas::getTextureCoords(const Vector2& location) const
 {
-    static float texturesPerRow     = m_size / m_textureSize;
+    static float texturesPerRow     = float(m_size / m_textureSize);
     static float unitSize           = 1.0f / (float)texturesPerRow;
     static float pixelSize          = 1.0f / (float)m_size;
 
-    float xMin = (location.x * unitSize) + 0.5 * pixelSize;
-    float yMin = (location.y * unitSize) + 0.5 * pixelSize;
+    float xMin = (location.x * unitSize) + 0.5f * pixelSize;
+    float yMin = (location.y * unitSize) + 0.5f * pixelSize;
 
-    float xMax = (xMin + unitSize) - 0.5 * pixelSize;
-    float yMax = (yMin + unitSize) - 0.5 * pixelSize;
+    float xMax = (xMin + unitSize) - 0.5f * pixelSize;
+    float yMax = (yMin + unitSize) - 0.5f * pixelSize;
 
     return
     {

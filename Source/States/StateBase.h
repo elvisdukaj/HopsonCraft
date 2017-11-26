@@ -1,7 +1,7 @@
 #ifndef StateBase_H_INCLUDED
 #define StateBase_H_INCLUDED
 
-struct Camera;
+class Camera;
 class Application;
 class MasterRenderer;
 

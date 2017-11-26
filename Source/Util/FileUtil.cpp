@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 
-#ifdef __linux__ || __APPLE__
+#if defined(__linux__) || defined(__APPLE__)
     #include <experimental/filesystem>
 
 /**
@@ -30,7 +30,7 @@ std::string getFileContents(const std::string& filePath)
 }
 
 
-#ifdef __WIN32
+#ifdef WIN32
     std::vector<std::string> getFilePathsFromFolder(const std::string& folderName)
     {
         std::vector<std::string> fileNames;
@@ -70,26 +70,4 @@ std::vector<std::string> getFilePathsFromFolder(const std::string& folderName)
     return fileNames;
 }
 
-#endif // __WIN32
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif // WIN32

@@ -4,7 +4,7 @@
 #include "SFMLRenderer.h"
 #include "SimpleRenderer.h"
 
-struct Camera;
+class Camera;
 
 class MasterRenderer
 {

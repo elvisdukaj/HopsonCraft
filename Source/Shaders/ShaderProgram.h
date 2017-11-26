@@ -1,7 +1,6 @@
 #ifndef ShaderProgram_H_INCLUDED
 #define ShaderProgram_H_INCLUDED
-#include <GL/glew.h>
-#include <GL/glew.h>
+#include <GL/gl3w.h>
 #include <string>
 
 #include "../Maths/GLM.h"

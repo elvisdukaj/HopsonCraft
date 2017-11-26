@@ -13,7 +13,7 @@
 
 
 
-#ifdef __WIN32
+#ifdef WIN32
     extern "C"
     {
         //Enable dedicated graphics
@@ -23,14 +23,14 @@
 #else
     //Include for the linux/apple error message
     #include <unistd.h>
-#endif // __WIN32
+#endif // WIN32
 
 
 namespace
 {
     void errorMessage(const std::string& message)
     {
-        #ifdef __WIN32
+        #ifdef WIN32
             MessageBox(nullptr, message.c_str(), "Error", MB_OK);
             std::cerr << message << std::endl;
         #elif __linux__ || __APPLE__

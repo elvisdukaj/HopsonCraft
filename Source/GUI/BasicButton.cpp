@@ -12,7 +12,7 @@ namespace GUI
     :   Button      (m_quad)
     ,   m_function  (function)
     {
-        m_quad.setSize({BASE_WIDTH, BASE_HEIGHT});
+        m_quad.setSize({(float)BASE_WIDTH, (float)BASE_HEIGHT});
         m_quad.setTexture(&ResourceHolder::getTexure("GUI"));
         m_quad.setOutlineColor(sf::Color::Black);
         m_quad.setOutlineThickness(4);

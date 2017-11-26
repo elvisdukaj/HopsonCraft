@@ -62,7 +62,7 @@ namespace GUI
         component->setPosition({Display::get().getRaw().getSize().x / 2 - component->getSize().x / 2,
                                 float(m_currentY) });
 
-        m_currentY += component->getSize().y + 10;
+        m_currentY += static_cast<int>(component->getSize().y + 10.0f);
     }
 
     void Panel::addComponentGrid2x(std::unique_ptr<Component>& component)

@@ -11,7 +11,6 @@
 #include "../Util/STD_Util.h"
 
 World::World(const Camera& camera)
-:   m_pCamera       (&camera)
+:   m_pCamera(&camera)
 {
-
 }

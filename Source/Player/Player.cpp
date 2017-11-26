@@ -13,8 +13,8 @@
 Player::Player(Camera& camera) noexcept
 :   box             ({0.5, 1.5, 0.5})
 ,   m_p_camera      (&camera)
-,   m_flyModeToggle {sf::Keyboard::F, sf::seconds(0.3), m_isFlying}
-,   m_mouseLock     {sf::Keyboard::L, sf::seconds(0.5)}
+,   m_flyModeToggle {sf::Keyboard::F, sf::seconds(0.3f), m_isFlying}
+,   m_mouseLock     {sf::Keyboard::L, sf::seconds(0.5f)}
 { }
 
 void Player::addForce(const Vector3& force) noexcept
@@ -26,12 +26,12 @@ void Player::update(float dt)
 {
     //position    += m_velocity * dt;
     box.update(position);
-    m_velocity.x  *= 0.95;
-    m_velocity.z  *= 0.95; ///@TODO Dampen the velocity using dt
+    m_velocity.x  *= 0.95f;
+    m_velocity.z  *= 0.95f; ///@TODO Dampen the velocity using dt
 
     if (m_isFlying)
     {
-        m_velocity.y *= 0.95;
+        m_velocity.y *= 0.95f;
     }
 }
 

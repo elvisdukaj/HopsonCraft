@@ -14,8 +14,8 @@ namespace GUI
     {
         return  sprite.getGlobalBounds().contains
                 (
-                    sf::Mouse::getPosition(Display::get().getRaw()).x,
-                    sf::Mouse::getPosition(Display::get().getRaw()).y
+                    float(sf::Mouse::getPosition(Display::get().getRaw()).x),
+                    float(sf::Mouse::getPosition(Display::get().getRaw()).y)
                 );
     }
 

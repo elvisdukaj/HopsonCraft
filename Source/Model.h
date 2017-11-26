@@ -1,7 +1,7 @@
 #ifndef MODEL_H_INCLUDED
 #define MODEL_H_INCLUDED
 
-#include <GL/glew.h>
+#include <GL/gl3w.h>
 
 #include <vector>
 

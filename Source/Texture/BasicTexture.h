@@ -1,7 +1,7 @@
 #ifndef TEXTURE_H_INCLUDED
 #define TEXTURE_H_INCLUDED
 
-#include <GL/glew.h>
+#include <GL/gl3w.h>
 #include <string>
 
 class BasicTexture
@@ -16,7 +16,7 @@ class BasicTexture
     private:
         void clear();
 
-        GLuint m_textureID;
+        GLuint m_textureID = 0;
 };
 
 #endif // TEXTURE_H_INCLUDED

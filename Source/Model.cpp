@@ -6,7 +6,7 @@
 Model::Model(const std::vector<GLfloat>& vertexPositions,
              const std::vector<GLfloat>& textureCoordinates,
              const std::vector<GLuint>&  indices)
-:   m_indicesCount  (indices.size())
+:   m_indicesCount  ((GLuint)indices.size())
 {
     glGenVertexArrays(1, &m_vao);
     bind();
@@ -17,8 +17,8 @@ Model::Model(const std::vector<GLfloat>& vertexPositions,
 }
 
 Model::Model(const std::vector<GLfloat>& vertexPositions,
-             const std::vector<GLuint>&  indices)
-:   m_indicesCount  (indices.size())
+             const std::vector<GLuint>& indices)
+:   m_indicesCount(static_cast<GLuint>(indices.size()))
 {
     glGenVertexArrays(1, &m_vao);
     bind();
@@ -64,7 +64,7 @@ void Model::addData(const std::vector<GLfloat>& vertexPositions,
 {
     deleteData();
 
-    m_indicesCount = indices.size();
+    m_indicesCount = (GLuint)indices.size();
     glGenVertexArrays(1, &m_vao);
     glBindVertexArray(m_vao);
 
@@ -75,7 +75,7 @@ void Model::addData(const std::vector<GLfloat>& vertexPositions,
 
 void Model::deleteData()
 {
-    glDeleteBuffers(m_buffers.size(), m_buffers.data());
+    glDeleteBuffers((GLuint)m_buffers.size(), m_buffers.data());
     glDeleteVertexArrays(1, &m_vao);
 
     m_vao = 0;

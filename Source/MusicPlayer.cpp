@@ -7,7 +7,7 @@
 
 MusicPlayer::MusicPlayer()
 :   m_songs         (getFilePathsFromFolder("Data/Music"))
-,   m_currentSong   (Random::intInRange(0, m_songs.size() - 1))
+,   m_currentSong   ((uint32_t)Random::intInRange(0, m_songs.size() - 1))
 {
     m_music.setVolume(2);
     getNextSong();
@@ -20,7 +20,7 @@ void MusicPlayer::update()
         uint32_t song;
         do
         {
-            song = Random::intInRange(0, m_songs.size() - 1);
+            song = (uint32_t)Random::intInRange(0, m_songs.size() - 1);
         } while (m_currentSong == song);
 
         m_currentSong = song;

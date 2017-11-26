@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include <GL/glew.h>
+#include <GL/gl3w.h>
 
 
 Display& Display::get()
@@ -22,10 +22,12 @@ Display::Display()
 
     m_window.create(sf::VideoMode::getDesktopMode(),
                     "HopsonCraft",
-                    sf::Style::Fullscreen,
+                    sf::Style::Resize,
                     contextSettings);
-    glewInit();
-    glewExperimental = GL_TRUE;
+	
+	if(gl3wInit())
+		throw std::runtime_error{ "Unable to initialize OpenGL" };
+
     glViewport(0, 0, getRaw().getSize().x, getRaw().getSize().y);
 
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
